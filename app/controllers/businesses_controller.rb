@@ -2,10 +2,12 @@ class BusinessesController < ApplicationController
   def index
     @businesses = Business.all
   end
+
   def new
     @type = Type.find(params[:type_id])
     @business = @type.businesses.new
   end
+
   def create
     @type = Type.find(params[:type_id])
     @business = @type.businesses.new(business_params)
@@ -15,16 +17,17 @@ class BusinessesController < ApplicationController
       render :new
     end
   end
+
   def show
     @type = Type.find(params[:type_id])
     @business = Business.find(params[:id])
-    render :show
   end
+
   def edit
     @type = Type.find(params[:type_id])
     @business = Business.find(params[:id])
-    render :edit
   end
+
   def update
     @type = Type.find(params[:type_id])
     @business= Business.find(params[:id])
@@ -45,4 +48,5 @@ class BusinessesController < ApplicationController
   def business_params
     params.require(:business).permit(:name, :address, :phone_number, :web_address, :hours)
   end
+
 end

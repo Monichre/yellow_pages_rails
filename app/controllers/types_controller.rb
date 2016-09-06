@@ -1,22 +1,20 @@
 class TypesController < ApplicationController
   def index
     @types = Type.all
-    render :index
   end
 
   def show
     @type = Type.find(params[:id])
-    render :show
   end
 
   def new
     @type = Type.new
-    render :new
   end
 
   def create
     @type = Type.new(type_params)
     if @type.save
+      flash[:notice] = "Type successfully added!"
       redirect_to types_path
     else
       render :new
@@ -25,12 +23,12 @@ class TypesController < ApplicationController
 
   def edit
     @type = Type.find(params[:id])
-    render :edit
   end
 
   def update
     @type= Type.find(params[:id])
     if @type.update(type_params)
+      flash[:notice] = "Edit Successful!"
       redirect_to types_path
     else
       render :edit
