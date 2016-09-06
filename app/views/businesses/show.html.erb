@@ -1,0 +1,13 @@
+<h1><%= @business.name %></h1>
+<h1><%= @business.phone_number %></h1>
+<h1><%= @business.web_address %></h1>
+<h1><%= @business.address %></h1>
+<h1><%= @business.hours %></h1>
+
+
+<p><%= link_to "Edit", edit_type_business_path(@type, @business) %></p>
+<p><%= link_to "Delete", type_business_path(@type, @business), :data => {:confirm => "You sure?", :method => "delete"} %></p>
+
+
+
+<%= link_to "Return to #{@type.name}", type_path(@business.type) %>
